@@ -197,20 +197,20 @@ angular.module('starter.controllers', [])
   })
 
   $scope.play = function(){
-    console.log($scope.text);
-    $scope.theText = $scope.text;
-     document.addEventListener('deviceready', function () {
-    // basic usage
-    TTS
-        .speak('hello, world!', function () {
-            alert('success');
-        }, function (reason) {
-            alert(reason);
-        });
+//     console.log($scope.text);
+//     $scope.theText = $scope.text;
+//      document.addEventListener('deviceready', function () {
+//     // basic usage
+//     TTS
+//         .speak('hello, world!', function () {
+//             alert('success');
+//         }, function (reason) {
+//             alert(reason);
+//         });
     
-    // or with more options
+//     // or with more options
 
-}, false);
+// }, false);
   }
 
   $scope.backtohome = function(){
