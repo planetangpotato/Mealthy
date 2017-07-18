@@ -1,0 +1,57 @@
+<ion-view ng-controller="account">
+  <ion-content overflow-scroll="false">
+    <div class="bgbody1">
+    <center class="header-height3">
+    <img src="img/user.png" width="25%" alt=""><br>
+      <p class="header" style="font-size: 150%;">{{afname}}</p>
+      <button type="button" class="button button-outline button-light icon-left ion-gear-a" ng-click="settings()"></i>{{alabel}} Settings</button>
+    </center>
+    </div>
+    <div class="padding" ng-hide="settingsval">
+    <br>
+    	 <span class="default-font"><i style="font-size: 120%" class="icon ion-heart"></i> <b>Favorite</b> Recipes</span>
+    	 <div class="row" style="flex-wrap: wrap;">
+    	 	
+    	 	 <div ng-repeat='x in favoriteslist track by $index' style="width: 50%;flex: row;float: right;padding:0px 5px 0px 5px">
+          <div class="list card">
+            <div ng-click="detailsf(x.recipeid)" class="item item-body">
+                <img src="{{x.recipeimg}}"  width="90%">
+                
+                <p>
+                  <b>#{{x.recipename}}</b><br>
+                  Rating {{x.rating}}<br>
+                  <i class="icon ion-clock"></i> {{x.mins}}
+                </p>
+            </div>
+          </div>
+        </div>
+    	 </div>
+    </div>
+    <div ng-show="settingsval">
+      <ul class="list" ng-hide="editval">
+          <li class="item"><b>Name </b>{{sfname}}</li>
+          <li class="item"><b>Username </b>{{susername}}</li>
+          <li class="item" ng-click="editaccount()"><b>Edit Account</b></li>
+          <li class="item" ng-click="logout()"><b>Logout Account</b></li>
+      </ul>
+      <div ng-show="editval" class="padding">
+          <div class="list">
+          <div class="item item-input item-stacked-label input-design">
+            <b class="input-label">Fullname</b>
+            <input type="text" id="settingfname" ng-model="settingfname" placeholder="Enter your fullname" style="background: none;">
+          </div>
+          <div class="item item-input item-stacked-label input-design">
+            <b class="input-label">Username</b>
+            <input type="text" id="settinguname"  ng-model="settinguname" placeholder="Enter your username" style="background: none;">
+          </div>
+        </div>
+        <center>{{selabel}}</center>
+        <button type="button" ng-click="savechanges()" class="button button-block button-assertive" style="border-radius: 50px;border-color: #B71C1C">Save Changes</button>
+        <button type="button" ng-click="editaccount()" style="border-radius: 50px;" class="button button-assertive button-outline button-block">Back</button>
+        <br><br>
+      </div>
+  </div>
+
+    
+  </ion-content>
+</ion-view>

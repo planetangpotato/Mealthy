@@ -1,0 +1,41 @@
+<ion-view ng-controller="search">
+  <ion-content overflow-scroll="false">
+    
+    <div class="bgbodyr">
+    <center class="header-height3">
+      <span class="header" style="font-size: 120%;">What's on my <b>Refrigerator?</b></span>
+       <div class="list list-inset">
+          <div class="item item-input" style="padding:0px 10px 0px 10px">
+            <input type="text" id="ingredients" ng-model="ingredients" placeholder="Add Ingredient's Name">
+            <a ng-click="searchi()" class="button button-icon icon ion-plus-round default-color"></a>
+          </div>
+        </div>
+    </center>
+    </div>
+    <div class="padding">
+    <div ng-show="sbutton">
+        <button type="button" ng-click="searchri()" class="button button-assertive button-block animation-target5">Search Recipe</button>
+        <br><span class="default-font"><b>Ingredients</b> List</span>
+    </div>
+    <div ng-hide="sbutton">
+        
+        <center><span class="default-font"><b>No Ingredients</b> in the list </span></center>
+        
+    </div>
+    <br>
+    <div style="flex-wrap: wrap">
+      
+        
+            <div ng-repeat="i in ilist track by $index"  style="background-color: #E0E0E0;padding:0px 8px 0px 8px;flex: row;float: left;margin: 0px 8px 10px 0px;border-radius: 50px"  class="">
+            <span style="display: flex;align-items: center;">
+            {{i}}<a class="button button-icon icon ion-close-circled default-color" ng-click="del($index)"></a>
+            </span>
+            </div>
+      
+   
+
+      <br><br>
+    </div>
+
+  </ion-content>
+</ion-view>

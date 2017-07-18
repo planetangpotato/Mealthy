@@ -1,0 +1,69 @@
+<ion-view ng-controller="resultsri">
+  
+  <ion-content overflow-scroll="false">
+
+  <div class="bgbodyr header-height2 padding">
+    <a class="button icon-left ion-chevron-left button-clear button-light" ng-click="backtosri()">Back</a>
+  </div>
+  
+  <div class="padding" ng-if="loadingi">
+      <span class="default-font"></b><b>{{resultsrii}}</b> for '{{ril}}'</span><br>
+      <div class="row" style="flex-wrap: wrap">
+     
+     <!--  <div style="width: 50%;flex: row;padding:0px 5px 0px 5px">
+        <div class="list card">
+          <div ng-click="details()" class="item item-body">
+              <img src="img/food.png" width="90%">
+              
+              <p>
+                <b>#Adobong Manok na Gata sa buko</b><br>
+                Rating 5<br>
+                <i class="icon ion-clock"></i> 50mins
+              </p>
+          </div>
+        </div>
+      </div>
+       <div style="width: 50%;flex: row;padding:0px 5px 0px 5px">
+        <div class="list card">
+          <div ng-click="details()" class="item item-body">
+              <img src="img/food.png" width="90%">
+              
+              <p>
+                <b>#Adobong Manok ng Bataan</b><br>
+                Rating 5<br>
+                <i class="icon ion-clock"></i> 50mins
+              </p>
+          </div>
+        </div>
+      </div> -->
+
+      
+       <div ng-repeat='data in resultri' style="width: 50%;flex: row;padding:0px 5px 0px 5px">
+        <div class="list card">
+          <div ng-click="details(data.id)" class="item item-body">
+              <img src="{{data['imageUrlsBySize']['90']}}">
+              
+              <p>
+                <b>#{{data.recipeName}}</b><br>
+                Rating {{data.rating}}<br>
+                <i class="icon ion-clock"></i> {{data.totalTimeInSeconds/60}}mins
+              </p>
+          </div>
+        </div>
+      </div>
+  </div>
+  </div>
+
+
+  <div class="padding" ng-if="loadingi == false">
+    <span class="default-font"></b><b>Searching</b> for '{{ril}}'</span><br>
+    <div style="padding-top: 25vh;">
+    <center class="animation-target4">
+        <img src="img/cook.png" width="50%" alt=""><br>
+        <b style="color: red;">Loading...</b>
+    </center>
+  </div>
+  </div>
+  
+  </ion-content>
+</ion-view>

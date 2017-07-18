@@ -1,0 +1,102 @@
+<ion-view ng-controller="details">
+
+  <style type="text/css">
+    .bgbody3{
+        min-height: 100%;
+        box-shadow: inset 0 0 490px #303030;
+        background-image: url("{{details['images'][0]['hostedLargeUrl'] || details['images'][0]['imageUrlsBySize']['360']}}");
+        /*background-image: url("img/food.png");*/
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+      .w3-light-grey,.w3-hover-light-grey:hover,.w3-light-gray,.w3-hover-light-gray:hover{color:#000!important;background-color:#f1f1f1!important}
+      .w3-red,.w3-hover-red:hover{color:#fff!important;background-color:#EF5350!important}
+  </style>
+
+  <div class="bar bar-header bar-light shadow">
+  <a ng-click="backtohome()" class="button icon-left ion-chevron-left button-clear button-dark" style="color: #fd2e2e;">Back</a>
+  </div>
+
+  <ion-content overflow-scroll="false">
+  
+  <br><br>
+  
+  <div ng-if="details">
+  <div class="bgbody3 header-height animation-target">
+    <center class="animation-target2">
+      <a class="button button-icon icon ion-heart" ng-click="saverecipe(details.id,details.name,details['images'][0]['hostedLargeUrl'],details.rating,details.totalTime,details.ingredientLines,details['source']['sourceRecipeUrl'],details['flavors'],details['source']['sourceDisplayName'])" style="color: red" ng-hide="save"></a><span style="color: white" ng-show="save"><br>Saved</span><br>
+      <span style="color: white;font-size: 120%"><b>{{details.name}}</b></span><br>
+      <span style="color: white;">Recipe from <b>{{details['source']['sourceDisplayName']}}</b></span>
+    </center>
+  </div>
+  <div class="padding" ng-hide="nutritional">
+    <center><button id="play" ng-click="play()" class="button button-assertive button-outline icon ion-radio-waves"> Play</button></center><br>
+    <span class="default-font"><b>Recipe</b> Ingredients </span>&nbsp;&nbsp;&nbsp;<span><i class="icon ion-clock"></i> {{details['totalTime']}}</span><br><br>
+    <span ng-repeat="data in details['ingredientLines'] track by $index">{{data}}<br></span>
+    <br>
+    <a href="{{details['source']['sourceRecipeUrl']}}" target="_blank" class="default-font" style="text-decoration: none"><b>View</b> Recipe</a> <span style="color: gray">(Click here to see recipe)</span><br>
+    <a href="" ng-click="nutritionalshow()" target="_blank" class="default-font" style="text-decoration: none"><b>View</b> Nutritional Facts</a>
+    <br><br><hr><br>
+    <span class="default-font"><b>Recipe</b> Flavors</span><br><br>
+    <div ng-repeat="(key,val) in details['flavors']" style="margin-top: 5px">
+      {{key}}
+      <!-- <progress max="100" value="{{val*100}}" style="margin-top: -2px;"> </progress> -->
+      <div class="w3-light-grey" style="margin-top: 2px">
+        <div class="w3-red" style="height:20px;width:{{val*100}}%"></div>
+      </div>
+    </div>
+  <br><br>
+
+  </div>
+  </div>
+  <div ng-if="details.name == null" style="padding-top: 25vh;">
+    <center class="animation-target4">
+        <img src="img/cook.png" width="50%" alt=""><br>
+        <b style="color: red;">Preparing recipe...</b>
+    </center>
+  </div>
+
+   <!-- <div class="bgbody3 header-height">
+    <center>
+      <a class="button button-icon icon ion-heart" style="color: red"></a><br>
+      <span style="color: white;font-size: 120%"><b>Adobong Manok</b></span><br>
+      <span style="color: white;">Recipe from <b>Gordon College CCS</b></span>
+    </center>
+  </div>
+  <div class="padding" ng-hide="nutritional">
+    <span class="default-font"><b>Recipe</b> Ingredients </span>&nbsp;&nbsp;&nbsp;<span><i class="icon ion-clock"></i> 45mins</span><br><br>
+    <span>5 tbs Vinegar<br>10 tbs Soysauce<br>1 whole Chicken<br>5 grams Paminta<br>1 liter of Water<br></span>
+    <br>
+    <a href="{{details['source']['sourceRecipeUrl']}}" target="_blank" class="default-font" style="text-decoration: none"><b>View</b> Recipe</a> <span style="color: gray">(Click here to see recipe)</span><br>
+    <a href="" ng-click="nutritionalshow()" target="_blank" class="default-font" style="text-decoration: none"><b>View</b> Nutritional Facts</a>
+    <br><br><hr><br>
+    <span class="default-font"><b>Recipe</b> Flavors</span><br><br>
+    <div style="margin-top: -5px">
+      Sourness
+      <progress max="100" value="40}" style="margin-top: -2px;"> </progress>
+    </div>
+    <div style="margin-top: -5px">
+      Salty
+      <progress max="100" value="10" style="margin-top: -2px;"> </progress>
+    </div>
+    <div style="margin-top: -5px">
+      Sweet
+      <progress max="100" value="60" style="margin-top: -2px;"> </progress>
+    </div>
+    <div style="margin-top: -5px">
+      Bitter
+      <progress max="100" value="10" style="margin-top: -2px;"> </progress>
+    </div>
+  <br><br>
+
+  </div> -->
+
+  <div class="padding" ng-show="nutritional" >
+      <a ng-click="nutritionalhide()" class="button icon-left ion-chevron-left button-clear button-dark" style="color: #fd2e2e;">Back to Ingredients</a><hr>
+       <span ng-repeat="(key, val) in details['nutritionEstimates']" ng-if="val.value!=0"><b>{{val.description||val.attribute}}</b> {{val.value}}<br></span>
+
+  </div>
+
+  </ion-content>
+</ion-view>

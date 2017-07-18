@@ -1,0 +1,76 @@
+<ion-view ng-controller="results">
+  <div class="list list-inset">
+    <div class="item item-input" style="padding:0px 10px 0px 10px">
+      <a ng-click="backtohome2()" class="button button-icon icon ion-chevron-left default-color"></a>
+      <input type="text" id="q" ng-model="resq" placeholder="Search Recipe">
+      <a ng-click="searchinresult()" class="button button-icon icon ion-search default-color"></a>
+    </div>
+  </div>
+
+  <ion-content overflow-scroll="false">
+
+  <div class="bgbody2 header-height2">
+  </div>
+  
+  <div class="padding" ng-if="loadingr">
+      <span class="default-font"></b><b>{{resultsrr}}</b> for '{{q}}'</span><br>
+      <div class="row" style="flex-wrap: wrap">
+     
+     <!--  <div style="width: 50%;flex: row;padding:0px 5px 0px 5px">
+        <div class="list card">
+          <div ng-click="details()" class="item item-body">
+              <img src="img/food.png" width="90%">
+              
+              <p>
+                <b>#Adobong Manok na Gata sa buko</b><br>
+                Rating 5<br>
+                <i class="icon ion-clock"></i> 50mins
+              </p>
+          </div>
+        </div>
+      </div>
+       <div style="width: 50%;flex: row;padding:0px 5px 0px 5px">
+        <div class="list card">
+          <div ng-click="details()" class="item item-body">
+              <img src="img/food.png" width="90%">
+              
+              <p>
+                <b>#Adobong Manok ng Bataan</b><br>
+                Rating 5<br>
+                <i class="icon ion-clock"></i> 50mins
+              </p>
+          </div>
+        </div>
+      </div> -->
+      
+      
+       <div ng-repeat='data in qresult' style="width: 50%;flex: row;padding:0px 5px 0px 5px">
+        <div class="list card">
+          <div ng-click="details(data.id)" class="item item-body">
+              <img src="{{data['imageUrlsBySize']['90']}}">
+              
+              <p>
+                <b>#{{data.recipeName}}</b><br>
+                Rating {{data.rating}}<br>
+                <i class="icon ion-clock"></i> {{data.totalTimeInSeconds/60}}mins
+              </p>
+          </div>
+        </div>
+      </div>
+  </div>
+  </div>
+
+  <div class="padding" ng-if="loadingr == false">
+    <span class="default-font"></b><b>Searching</b> for '{{q}}'</span><br>
+    <div style="padding-top: 25vh;">
+    <center class="animation-target4">
+        <img src="img/cook.png" width="50%" alt=""><br>
+        <b style="color: red;">Searching for recipe...</b>
+    </center>
+  </div>
+  </div>
+
+
+  
+  </ion-content>
+</ion-view>

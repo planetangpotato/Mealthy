@@ -1,0 +1,99 @@
+<ion-view ng-controller="home">
+  <div class="list list-inset shadow">
+    <div class="item item-input" style="padding:0px 10px 0px 10px">
+      <input type="text" id="recipe_data" ng-model="recipe_data" placeholder="Search Recipe">
+      <a ng-click="searchr()" class="button button-icon icon ion-search default-color"></a>
+    </div>
+  </div>
+
+  <ion-content overflow-scroll="false">
+
+  <div class="bgbody2 header-height">
+    <center>
+      <span style="color: white;font-size: 120%"><b>Mealthify</b> your Meal !</span><br>
+      <span style="color: white">Eat good. Look good. Feel good</span>
+    </center>
+  </div><br>
+  
+  <div class="padding" ng-if="featured">
+      <span class="default-font"><i style="font-size: 120%" class="icon ion-pound"></i> <b>Featured</b> Recipe</span><br>
+      <div class="row" style="flex-wrap: wrap">
+
+     <!--  <div style="width: 50%;flex: row;float: right;padding:0px 5px 0px 5px">
+        <div class="list card">
+          <div ng-click="details()" class="item item-body">
+              <img src="img/food.png"  width="90%">
+              
+              <p>
+                <b>#Adobong Manok</b><br>
+                Rating 4<br>
+                <i class="icon ion-clock"></i> 50mins
+              </p>
+          </div>
+        </div>
+      </div>
+
+       <div style="width: 50%;flex: row;float: right;padding:0px 5px 0px 5px">
+        <div class="list card">
+          <div ng-click="details()" class="item item-body">
+              <img src="img/food.png"  width="90%">
+              
+              <p>
+                <b>#Adobong Manok</b><br>
+                Rating 4<br>
+                <i class="icon ion-clock"></i> 50mins
+              </p>
+          </div>
+        </div>
+      </div>
+
+      <div style="width: 50%;flex: row;float: right;padding:0px 5px 0px 5px">
+        <div class="list card">
+          <div ng-click="details()" class="item item-body">
+              <img src="img/food.png"  width="90%">
+              
+              <p>
+                <b>#Adobong Manok</b><br>
+                Rating 4<br>
+                <i class="icon ion-clock"></i> 50mins
+              </p>
+          </div>
+        </div>
+      </div>
+      
+      <div style="width: 50%;flex: row;float: right;padding:0px 5px 0px 5px">
+        <div class="list card">
+          <div ng-click="details()" class="item item-body">
+              <img src="img/food.png"  width="90%">
+              
+              <p>
+                <b>#Adobong Manok</b><br>
+                Rating 4<br>
+                <i class="icon ion-clock"></i> 50mins
+              </p>
+          </div>
+        </div>
+      </div> -->
+
+      <div ng-repeat='data in featured' style="width: 50%;flex: row;float: right;padding:0px 5px 0px 5px">
+        <div class="list card">
+          <div ng-click="details(data.id)" class="item item-body">
+              <img src="{{data['imageUrlsBySize']['90']}}">
+              
+              <p>
+                <b>#{{data.recipeName}}</b><br>
+                Rating {{data.rating}}<br>
+                <i class="icon ion-clock"></i> {{data.totalTimeInSeconds/60}}mins
+              </p>
+          </div>
+        </div>
+      </div>
+  </div>
+  </div>
+
+  <div class="padding" ng-if="featured == null">
+    <div class="animation-target4"><b style="color: red;">Finding the best recipe...</b></div>
+  </div>
+  
+  </ion-content>
+</ion-view>

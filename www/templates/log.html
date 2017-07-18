@@ -1,0 +1,76 @@
+<ion-view class="bgbody1" ng-controller="log">
+
+	
+	<style type="text/css">
+		input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+		  color: #DCDCDC;
+		}
+		input::-moz-placeholder { /* Firefox 19+ */
+		  color: #DCDCDC;
+		}
+		input:-ms-input-placeholder { /* IE 10+ */
+		  color: #DCDCDC;
+		}
+		input:-moz-placeholder { /* Firefox 18- */
+		  color: #DCDCDC;
+		}
+
+	</style>
+	
+
+  <ion-content class="padding" overflow-scroll="false">
+
+	<!-- LOGIN -->
+  	<div ng-hide="login_page">
+	    <center style="margin-top: 10%;">
+	    	<img src="img/mealthy2-log.png" alt=""><br>
+	    	<p style="color: white;margin-top: -25px;">Your Recipe buddy</p>
+	    	<p style="color: white">{{lerror}}</p>
+	    </center>
+	  	
+	  	<br>
+
+		<div class="list" style="padding:0px 15px 0px 15px;">
+		  <label class="item item-input item-stacked-label input-design">
+		    <span class="input-label" style="color: white">Username</span>
+		    <input type="text" id="lusername" ng-model="lusername" placeholder="Enter your username" style="background: none;color: white">
+		  </label>
+		  <label class="item item-input item-stacked-label input-design">
+		    <span class="input-label" style="color: white">Password</span>
+		    <input type="password" id="lpassword" ng-model="lpassword" placeholder="Enter your password" style="background: none;color: white">
+		  </label>
+		</div>
+		<br>
+		<button type="button" class="button button-block button-assertive" ng-click="login(lusername,lpassword)" style="border-radius: 50px;border-color: #B71C1C">Let's Start</button><br>
+		<center><span style="color: white;">Don't have an account? <a href="" ng-click="register_page()" style="color: white;font-weight: bold;text-decoration: none;font-size: 15px;">Register</a></span></center>
+	</div>
+
+	<!-- REGISTER -->
+	<div ng-show="login_page">
+		<a class="button icon-left ion-chevron-left button-clear button-light" ng-click="flogin_page()">Back</a><br><br>
+		<center>
+			<span style="color: white;font-size: 35px;"><b>Sign</b> <span style="font-weight: lighter;">Up</span></span><br>
+			<span style="color: white;">Join our Community!</span>
+		</center>
+		<br><br>
+		<div class="list" style="padding:0px 15px 0px 15px;">
+		  <div class="item item-input item-stacked-label input-design">
+		    <span class="input-label" style="color: white">Fullname</span>
+		    <input type="text" id="fullname" ng-model="fullname" placeholder="Enter your fullname" style="background: none;color: white">
+		  </div>
+		  <div class="item item-input item-stacked-label input-design">
+		    <span class="input-label" style="color: white">Username</span>
+		    <input type="text" id="susername"  ng-model="susername" placeholder="Enter your username" style="background: none;color: white">
+		  </div>
+		  <div class="item item-input item-stacked-label input-design">
+		    <span class="input-label" style="color: white">Password</span>
+		    <input type="text" id="spassword" ng-model="spassword" placeholder="Enter your password" style="background: none;color: white">
+		  </div>
+		</div>
+		<br>
+		<center><span style="color: white">{{serror}}</span></center>
+		<button type="button" ng-click="signup(fullname,susername,spassword)" class="button button-block button-assertive" style="border-radius: 50px;border-color: #B71C1C">Create Account</button>
+	</div>
+
+  </ion-content>
+</ion-view>
