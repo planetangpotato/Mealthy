@@ -214,7 +214,7 @@ angular.module('starter.controllers', [])
 
 TTS
         .speak({
-            text: $scope.color,
+            text: 'bakiiiiiit',
             locale: 'es-ES',
             rate: 0.75
         }, function () { alert("success");
