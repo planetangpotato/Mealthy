@@ -216,7 +216,7 @@ TTS
         .speak({
             text: $scope.theText,
             locale: 'en-US',
-            rate: 0.75
+            rate: 1
         }, function () { console.log('success');
     },
     function (reason) {
