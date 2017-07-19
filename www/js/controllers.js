@@ -167,7 +167,7 @@ angular.module('starter.controllers', [])
 })
 
 // CONTROLLER DETAILS PAGE -------------------------------------
-.controller('details',function($scope,$state,$http,$filter, $log, TTSConfig, TTSAudio, TTS_EVENTS){
+.controller('details',function($scope,$state,$http,$filter){
 
 
 
@@ -211,6 +211,16 @@ angular.module('starter.controllers', [])
 //     // or with more options
 
 // }, false);
+
+TTS
+        .speak({
+            text: $scope.color,
+            locale: 'es-ES',
+            rate: 0.75
+        }, function () { alert("success");
+    },
+    function (reason) {
+    });
   }
 
   $scope.backtohome = function(){
