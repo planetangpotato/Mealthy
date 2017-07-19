@@ -197,8 +197,8 @@ angular.module('starter.controllers', [])
   })
 
   $scope.play = function(){
-//     console.log($scope.text);
-//     $scope.theText = $scope.text;
+    console.log($scope.text);
+    $scope.theText = $scope.text;
 //      document.addEventListener('deviceready', function () {
 //     // basic usage
 //     TTS
@@ -214,10 +214,10 @@ angular.module('starter.controllers', [])
 
 TTS
         .speak({
-            text: 'bakiiiiiit',
+            text: $scope.theText,
             locale: 'es-ES',
             rate: 0.75
-        }, function () { alert("success");
+        }, function () { console.log('success');
     },
     function (reason) {
     });
