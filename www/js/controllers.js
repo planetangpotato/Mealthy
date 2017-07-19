@@ -215,7 +215,7 @@ angular.module('starter.controllers', [])
 TTS
         .speak({
             text: $scope.theText,
-            locale: 'es-ES',
+            locale: 'es-US',
             rate: 0.75
         }, function () { console.log('success');
     },
