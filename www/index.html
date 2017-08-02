@@ -16,6 +16,43 @@
      <script src="js/responsivevoice.js"></script>
      <script src="js/pjTextTospeech.min.js"></script>
      <script src="https://cdn.pubnub.com/sdk/pubnub-angular/pubnub-angular-3.2.1.min.js"></script>
+
+    <script type="text/javascript">
+    	var app = {
+		    initialize: function() {
+		        this.bindEvents();
+		    },
+		    bindEvents: function() {
+		        document.addEventListener('deviceready', this.onDeviceReady, false);
+		    },
+		    onDeviceReady: function() {
+
+		        // PETEY'S SOLUTION, WRAPPED IN CODE TO CHECK FOR ANDROID PRE 4.2
+		        // ALSO MODIFIED TO USE DEVICE PIXEL RATIO, INSTEAD OF CONTENTWIDTH
+		        if( isAndroid() ) {
+		            var matches = device.version.match( /[0-9]+(\.[0-9]+)?/i );
+
+		            if( matches.length && parseFloat( matches[ 0 ] ) < 4.2 ) {
+		                document.body.style.zoom = 1 / window.devicePixelRatio;
+		            }
+		        }
+
+		        // start app logic
+
+		    }
+		};
+
+		app.initialize();
+
+		function isAndroid() {
+		    if( device.platform.match( /android/i ) ) {    
+		        return true;
+		    }
+
+		    return false;
+}
+    </script>
+
   </head>
   
   <body ng-app="starter">
