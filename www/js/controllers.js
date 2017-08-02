@@ -139,7 +139,7 @@ angular.module('starter.controllers', [])
       })
 
     $http({
-      url : 'http://api.yummly.com/v1/api/recipes?_app_id=ef8e13d8&_app_key=dd1ea15064341fb164c816fd125e3ef2&requirePictures=true&maxResult=8&start=0&allowedCuisine[]=cuisine^cuisine-american',
+      url : 'http://api.yummly.com/v1/api/recipes?_app_id=ef8e13d8&_app_key=dd1ea15064341fb164c816fd125e3ef2&requirePictures=true&maxResult=8&start=2&allowedCuisine[]=cuisine^cuisine-american',
       method : 'GET'
     })
     .then(function(data){
@@ -169,7 +169,11 @@ angular.module('starter.controllers', [])
 // CONTROLLER DETAILS PAGE -------------------------------------
 .controller('details',function($scope,$state,$http,$filter){
 
-
+  $scope.$on('$ionicView.beforeLeave', function() {
+    console.log('awts');
+    TTS
+    .stop();
+  })
 
   $scope.$on('$ionicView.beforeEnter', function() {
 
@@ -197,6 +201,7 @@ angular.module('starter.controllers', [])
   })
 
   $scope.play = function(){
+    document.getElementById('play').disabled = true;
     console.log($scope.text);
     $scope.theText = $scope.text;
 //      document.addEventListener('deviceready', function () {
@@ -217,7 +222,9 @@ TTS
             text: $scope.theText,
             locale: 'en-US',
             rate: 1
-        }, function () { console.log('success');
+        }, function () { 
+          console.log('success');
+          document.getElementById('play').disabled = false;
     },
     function (reason) {
     });
@@ -358,7 +365,7 @@ TTS
   }
 
     $scope.searchinresult = function(){
-
+      $scope.loadingr = false;
       if($scope.resq != null || $scope.resq != localStorage.getItem("q")){
 
       localStorage.setItem("q" , $scope.resq);
@@ -370,7 +377,12 @@ TTS
       })
       .then(function(data){
         $scope.qresult = data['data']['matches'];
-        console.log($scope.qresult);
+        console.log($scope.qresult);  if(data['data']['matches'].length == 0){
+        $scope.resultsrr = "No results found";
+      }else{
+        $scope.resultsrr = "Results";
+      }
+      $scope.loadingr = true;
       })
     
     document.getElementById('q').value = q;
@@ -388,7 +400,7 @@ TTS
       if(a != null || a != "" || a != " "){
         console.log(a);
       }
-      ing.push(a);
+      ing.push(a.toLowerCase());
       document.getElementById('ingredients').value = "";
       console.log(ing);
       $scope.ilist = ing;
