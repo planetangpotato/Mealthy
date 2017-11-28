@@ -51,7 +51,7 @@ angular.module('starter.controllers', [])
     if(username != null && password != null){
       $scope.lerror = "Please wait....";
       $http({
-        url : 'https://mealthy.000webhostapp.com/action.php',
+        url : 'http://planetangpotato.000webhostapp.com/action.php',
         method : 'POST',
         data : {
           'password' : lpassword,
@@ -88,7 +88,7 @@ angular.module('starter.controllers', [])
     if(username != null && password != null && fullname != null){
       $scope.serror = "Please wait....";
       $http({
-        url : 'https://mealthy.000webhostapp.com/action.php',
+        url : 'http://planetangpotato.000webhostapp.com/action.php',
         method : 'POST',
         data : {
           'fname' : fullname,
@@ -125,7 +125,7 @@ angular.module('starter.controllers', [])
     responsiveVoice.setDefaultVoice("US English Female");
       var userid = JSON.parse(localStorage.getItem('userdetails'));
       $http({
-        url : 'https://mealthy.000webhostapp.com/action.php',
+        url : 'http://planetangpotato.000webhostapp.com/action.php',
         method : 'POST',
         data : {
           'userid' : userid['id'],
@@ -250,7 +250,7 @@ TTS
       var userid = JSON.parse(localStorage.getItem('userdetails'));
       console.log(id);  
       $http({
-        url : 'https://mealthy.000webhostapp.com/action.php',
+        url : 'http://planetangpotato.000webhostapp.com/action.php',
         method : 'POST',
         data : {
           'id' : id,
@@ -263,7 +263,7 @@ TTS
         var userid = JSON.parse(localStorage.getItem('userdetails'));
 
        $http({
-        url : 'https://mealthy.000webhostapp.com/action.php',
+        url : 'http://planetangpotato.000webhostapp.com/action.php',
         method : 'POST',
         data : {
           'userid' : userid['id'],
@@ -284,7 +284,7 @@ TTS
     var userid = JSON.parse(localStorage.getItem('userdetails'));
     console.log(id+" "+img);
      $http({
-        url : 'https://mealthy.000webhostapp.com/action.php',
+        url : 'http://planetangpotato.000webhostapp.com/action.php',
         method : 'POST',
         data : {
           'id' : id,
@@ -306,7 +306,7 @@ TTS
         var userid = JSON.parse(localStorage.getItem('userdetails'));
 
        $http({
-        url : 'https://mealthy.000webhostapp.com/action.php',
+        url : 'http://planetangpotato.000webhostapp.com/action.php',
         method : 'POST',
         data : {
           'userid' : userid['id'],
@@ -508,7 +508,7 @@ TTS
       var userid = JSON.parse(localStorage.getItem('userdetails'));
 
        $http({
-        url : 'https://mealthy.000webhostapp.com/action.php',
+        url : 'http://planetangpotato.000webhostapp.com/action.php',
         method : 'POST',
         data : {
           'userid' : userid['id'],
@@ -565,7 +565,7 @@ TTS
       }else{
         $scope.selabel = "Please wait";
         $http({
-        url : 'https://mealthy.000webhostapp.com/action.php',
+        url : 'http://planetangpotato.000webhostapp.com/action.php',
         method : 'POST',
         data : {
           'id' : id,
